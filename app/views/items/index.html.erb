@@ -1,0 +1,38 @@
+<h1>Buy a Bike</h1>
+<br />
+
+<table class="catalog">
+
+<% @items.each do |item| %>
+  <tr>
+    <td>
+      <div class="image">
+        <%= link_to (image_tag item.image, :style => "height:100px"), item %>
+      </div>
+    </td>
+    <td>
+      <div class="name">
+        <%= link_to item.name, item %>
+      </div>
+      <div class="description">
+        <%= item.description %>
+      </div>
+      <div class="price">
+        <%= number_to_currency(item.price, :unit => "Euros ") %>
+      </div>
+      <div class="links">
+        <% if session[:login] == 1 %>
+          <%= link_to 'Edit', edit_item_path(item) %>
+          <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+        <% else %>
+          <a href="/cart/<%= item.id %>">Add to Cart</a><br /><br />
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+<% if session[:login] == 1 %>
+<p><%= link_to 'New Item', new_item_path %></p>
+<% end %>

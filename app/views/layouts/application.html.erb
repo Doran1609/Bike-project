@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="header">
+    
+  </div>
+  <div id="menu">
+    <div id="navbar">
+      <ul>
+        <li><a href="/items">Home</a></li>
+        <li><a href="/rents">Rent a Bike</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="/about">About us</a></li>
+        <li><a href="/admin">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="container">
+    <div id="content">
+      <p class="notice"><%= flash[:notice] %></p>
+      <p class="alert"><%= flash[:alert] %></p>
+        <%= yield %>
+    </div>
+  </div>
+    
+  <div id="footer">
+    <h6 class="footertext">&copy; Online BikeStore&trade; 2017</h6>
+  </div>
+
+</body>
+</html>

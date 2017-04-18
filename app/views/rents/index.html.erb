@@ -1,0 +1,33 @@
+<h1>Rent a Bike</h1>
+<br />
+
+<table class="catalog">
+
+<% @rents.each do |rent| %>
+  <tr>
+    <td>
+      <div class="image">
+        <%= link_to (image_tag rent.image, :style => "height:100px"), rent %>
+      </div>
+    </td>
+    <td>
+      <div class="name">
+        <%= link_to rent.name, rent %>
+      </div>
+      <div class="description">
+        <%= rent.description %>
+      </div>
+      <div class="price">
+        <%= number_to_currency(rent.price, :unit => "Euros ") %>
+      </div>
+      <div class="links">
+          <%= link_to 'Edit', edit_rent_path(rent) %>
+          <%= link_to 'Destroy', rent, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+
+<p><%= link_to 'New Item', new_rent_path %></p>
