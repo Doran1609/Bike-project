@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get 'mycarts/index'
+
+  get 'mycarts/show'
+
+  get 'mycarts/new'
+
+  get 'mycarts/edit'
+
+  resources :profiles
+
   devise_for :users
   get 'cart/index'
 
@@ -11,6 +21,10 @@ Rails.application.routes.draw do
   get '/cart' => 'cart#index' 
   get '/cart/:id' => 'cart#add'
   get '/cart/clear' => 'cart#clearCart' 
+  get '/signedinuserprofile' => 'profiles#signedinuserprofile'
+  get 'mycarts' => 'mycarts#index'
+  get '/mycart/:id' => 'mycart#add'
+
   
   resources :rents
 

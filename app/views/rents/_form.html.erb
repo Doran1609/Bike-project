@@ -11,47 +11,43 @@
     </div>
   <% end %>
 
+  <style>
+table, th, td {
+    border: 3px black solid;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+
+
+
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+   <div class="field">
+ <div class="field">
+  
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+   <%= f.label :items_id %><br>
+      <%= f.number_field :items_id ,class: 'form-control' %>  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email,class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date,class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :deposit %><br>
-    <%= f.text_field :deposit %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.date_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :finish %><br>
-    <%= f.date_select :finish %>
-  </div>
-  <div class="field">
-    <%= f.label :totald %><br>
-    <%= f.text_field :totald %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :total %><br>
-    <%= f.text_field :total %>
+    <%= f.label :days %><br>
+    <%= f.number_field :days,class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+  </div>
   </div>
 <% end %>

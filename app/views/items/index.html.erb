@@ -1,5 +1,10 @@
-<h1>Buy a Bike</h1>
-<br />
+<h1>Rent a Bike</h1>
+
+<p id='notice'><%= notice %></p>
+<%= form_tag(items_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search bikes by title" %>
+<%= submit_tag "Search" %>
+<% end %>
 
 <table class="catalog">
 
@@ -20,8 +25,10 @@
       <div class="price">
         <%= number_to_currency(item.price, :unit => "Euros ") %>
       </div>
-      <div class="links">
-        <% if session[:login] == 1 %>
+      
+       <div class="links">
+        <!--% if session[:login] == 1 %-->
+        <% if current_user.admin? %>
           <%= link_to 'Edit', edit_item_path(item) %>
           <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
         <% else %>
@@ -33,6 +40,9 @@
 <% end %>
 
 </table>
-<% if session[:login] == 1 %>
-<p><%= link_to 'New Item', new_item_path %></p>
+
+<!--% if session[:login] == 1 %-->
+<% if current_user.admin? %>
+
+  <p><%= link_to 'New Item', new_item_path %></p>
 <% end %>

@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery-1.9.1.js
+//= require jquery-ui.js
+//= require jquery-ui

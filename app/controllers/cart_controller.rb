@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_filter :authenticate_user!
 
   def add
     # get the ID of the product
@@ -13,6 +14,8 @@ class CartController < ApplicationController
       cart = session[:cart]
     end
     
+    
+    
     # if the product has already been added to the cart, increment the value
     # else set the value to 1
     if cart[id] then
@@ -24,6 +27,7 @@ class CartController < ApplicationController
     # redirect to the cart display page
     redirect_to :action => :index
   end
+  
   
   def clearCart
     # set the session variable to nil and redirect
@@ -40,4 +44,5 @@ class CartController < ApplicationController
       @cart = {}
     end
   end
+  
 end

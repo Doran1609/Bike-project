@@ -1,5 +1,6 @@
-class Rent < ActiveRecord::Base
-          belongs_to :items
+class Order < ActiveRecord::Base
+  
+   belongs_to :items
   validate :order_date_cannot_be_in_the_past
   
     def order_date_cannot_be_in_the_past
@@ -8,4 +9,3 @@ class Rent < ActiveRecord::Base
         end
     end
 end
-    

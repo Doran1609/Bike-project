@@ -1,12 +1,18 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :ensure_admin, :only => [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
+    if params[:search]
+      @items = Item.search(params[:search]).order("created_at DESC")
+    else
+      @items = Item.all.order('created_at DESC')
+    end
   end
-
   # GET /items/1
   # GET /items/1.json
   def show
@@ -60,6 +66,12 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+    def ensure_admin
+      unless current_user && current_user.admin?
+        render :text => "Access Error Message", :status => :unauthorized
+      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

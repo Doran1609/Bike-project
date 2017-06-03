@@ -1,4 +1,17 @@
 <h1>Your Cart</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  
+  <script>
+
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
 
 <% if @cart.empty? %>
     <p>Your Cart is empty</p>
@@ -13,6 +26,7 @@
         <td class="legend">Price</td>
         <td class="legend">Qty</td>
         <td class="legend">Total</td>
+        
     </tr>
     
 <% @cart.each do | id, quantity | %>
@@ -41,6 +55,37 @@
     </tr>
 </table>
 
+ <form action="/items">
+
+Pick Up:<br>
+<form>
+    <input id="datepicker" />
+</form>
+
+<br>
+
+Total days:<br>
+<input type="text" days="totaldays" id="dias">
+<br>
+
+<input type="text" size="3" id="dias" value="1" onChange="calcular_rent(this.value,quantity,totaltext);">
+
+<script>
+  
+     function calcular_rent(dias,quantity,totaltext) {
+         subtotal = dias * 20 * quantity;
+         totaltext.value = subtotal;
+      }
+ </script>
+
+
+
+
+<input type="submit">
+</form>
+    
 <p>
-    <%= link_to 'Continue Shopping', :controller => :items %>
+    <%= link_to 'Continue renting', :controller => :items %>
+    
+     <%= link_to 'Make a Booking', :controller => :rents %>
 </p>

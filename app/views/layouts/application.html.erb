@@ -5,6 +5,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+ <script type="text/javascript">
+  $(document).ready(function(){
+    $(".calendar").datepicker();
+  });
+ </script>
+
 </head>
 <body>
   <div id="header">
@@ -14,7 +25,6 @@
     <div id="navbar">
       <ul>
         <li><a href="/items">Home</a></li>
-        <li><a href="/rents">Rent a Bike</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="contact">Contact</a></li>
         <li><a href="/about">About us</a></li>
@@ -28,6 +38,12 @@
       <p class="notice"><%= flash[:notice] %></p>
       <p class="alert"><%= flash[:alert] %></p>
         <%= yield %>
+        
+        <% if user_signed_in? %>
+          <div> Signed <%= current_user.email %> (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>)
+        <% else %>
+          <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+        <% end %>
     </div>
   </div>
     

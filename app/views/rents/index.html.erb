@@ -1,33 +1,41 @@
 <h1>Rent a Bike</h1>
-<br />
 
-<table class="catalog">
 
-<% @rents.each do |rent| %>
-  <tr>
-    <td>
-      <div class="image">
-        <%= link_to (image_tag rent.image, :style => "height:100px"), rent %>
-      </div>
-    </td>
-    <td>
-      <div class="name">
-        <%= link_to rent.name, rent %>
-      </div>
-      <div class="description">
-        <%= rent.description %>
-      </div>
-      <div class="price">
-        <%= number_to_currency(rent.price, :unit => "Euros ") %>
-      </div>
-      <div class="links">
-          <%= link_to 'Edit', edit_rent_path(rent) %>
-          <%= link_to 'Destroy', rent, :confirm => 'Are you sure?', :method => :delete %>
-      </div>
-    </td>
-  </tr>
-<% end %>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  
+  <script>
 
-</table>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+</head>
 
-<p><%= link_to 'New Item', new_rent_path %></p>
+<body>
+    
+  <form action="/items">
+
+Pick Up:<br>
+<form>
+    <input id="datepicker" />
+    
+Total days:<br>
+<input type="text" days="totaldays">
+<br><br>
+
+Total Price:<br>
+<input type="text" price="price">
+<br><br>
+
+<input type="submit" value="items">
+</form>
+    
+    
+
+</body>
+</html>
