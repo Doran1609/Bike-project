@@ -23,7 +23,7 @@
     <tr>
         <td class="legend"></td>
         <td class="legend">Name</td>
-        <td class="legend">Price</td>
+        <td class="legend">Price2</td>
         <td class="legend">Qty</td>
         <td class="legend">Total</td>
         
@@ -40,7 +40,7 @@
         <td class="name"><%= link_to item.name, item %></td>
         <td class="price"><%= number_to_currency(item.price) %></td>
         <td class="quantity"><%= quantity %><br /></td>
-        <td class="price"><%= number_to_currency(quantity * item.price, :unit => "€") %></td>
+        <td class="priceee"><%= number_to_currency(quantity * item.price, :unit => "€") %></td>
     </tr>
     <% total += quantity * item.price %>
 <% end %>
